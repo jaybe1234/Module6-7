@@ -1,0 +1,67 @@
+
+ROM used:   3860/33788 (11%)
+            3860/33788 (11%) including unused fragments
+
+            3.1 Average locations per line
+            17.7 Average locations per statement
+
+RAM used:   240/8102 (3%) at main() level
+            279/8102 (3%) worst case
+
+Stack size: 30
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+  345   218 100  PICA.c
+  862     0   0  D:\Program Files (x86)\PICC\devices\24FJ48GA002.h
+   33     0   0  ..\..\..\Desktop\mbed\MRLAB\BL_Support.h
+----- -----
+ 1240   218 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     68   1    8             @DIV3232B
+0     16   0    2             @delay_ms1
+0    202   3    8             @DIVFF
+0     44   1    4             @SFTOI
+0    196   3    8             @MULFF
+0     74   1    2             @SITOF
+0    426   6    8             @ADDFF
+0     80   1    0   104  3.0  INT_EXT_INPUT0
+0     50   1    0    27  1.5  TIMER1_ist
+0     80   1    0   567  2.4  Init_Interrupts
+0    246   3    0             @PRINTFD16_9600_5725_5724
+0     36   0    2   197  3.1  grab
+0     94   1    5   460  5.7  driveMotor
+0     46   1    2   373  3.8  setzero
+0     36   0    2   238  3.7  setzero_z
+0    338   4   13   340  4.5  pid
+0    104   1    8             @FLT
+0    232   3    5  1103  8.1  SM_RxD
+0     50   1    2    40  1.7  UART1_Isr
+0    636   8    3  2209  8.8  MAIN
+0    276   4    0             @PRINTFD32_9600_5725_5724
+0     22   0    0             @const844
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               11
+    Statements              218
+    Comments                216
+    Volume (V)              8367
+    Difficulty (D)          46.6
+    Effort to implement (E) 390186
+    Time to implement (T)   6 hours, 1 minutes
+    Est Delivered Bugs (B)  2
+    Cyclomatic Complexity   34
+    Maintainability (MI)    115
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00BFE     0  3072  
+00C00-00C02     4  0  
+00C04-00DFA   504  0  
+00DFC-083FA  3352  26856  
+
+
+

@@ -322,11 +322,12 @@ void main(){
 			do{
 				set_pwm_duty(3,0);	
 				set_pwm_duty(4,2000);
-				printf("\countzz = %s\n", print_float(countz));
+				//printf("\countzz = %s\n", print_float(countz));
 			}while(countz<=A);
 				set_pwm_duty(3,0);	
 				set_pwm_duty(4,0);
 				disable_interrupts(INT_TIMER1);
+				putc('k');
 				getPackage = 0;
 				}
 	if (getPackage == 1 && state == 5){ // state 5 degree z

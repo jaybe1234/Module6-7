@@ -1,0 +1,16 @@
+[PROJECT]
+Target=PICA.hex
+Processor_Text=PIC24FJ48GA002
+CCSVersion=5.015
+Compiler=PCD
+[Target Data]
+FileList=PICA.c
+[Directories]
+Include=D:\Program Files (x86)\PICC\devices\;D:\Program Files (x86)\PICC\drivers\
+[PICA.c]
+Type=4
+[mru-list]
+1=PICA.c
+[Units]
+Count=1
+1=PICA (main)
