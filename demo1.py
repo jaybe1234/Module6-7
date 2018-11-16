@@ -41,6 +41,7 @@ while (1):
             print('setzero finish')
             break
 B.rotate(0)
+A.put(3)
 
 A.setZ()
 #verify 2 setzero z
@@ -122,6 +123,7 @@ while (1):
 
 B.rotate(angle)
 print('check7')
+time.sleep(1)
 A.put(3)
 A.down(6)
 while (1):
@@ -143,8 +145,8 @@ while (1):
         if ord(data) == 107:
             print('setZ finish')
             break
-A.move(0)
-B.move(0)
+A.move(19.06)
+B.move(-19.00)
 while (1):
     if ser.inWaiting() > 0:
         data = ser.read(1)
@@ -153,4 +155,28 @@ while (1):
             print('go posAB finish')
             break
 B.rotate(0)
+A.down(10)
+while (1):
+    if ser.inWaiting() > 0:
+        data = ser.read(1)
+        print("data =", ord(data))
+        if ord(data) == 107:
+            print('go posAB finish')
+            break
+time.sleep(1)
+A.put(3)
+
+
+A.setZ()
+while (1):
+    if ser.inWaiting() > 0:
+        data = ser.read(1)
+        print("data =", ord(data))
+        if ord(data) == 107:
+            print('go posAB finish')
+            break
+A.setZero()
+B.setZero()
+
+
 

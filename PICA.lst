@@ -1,4 +1,4 @@
-CCS PCD C Compiler, Version 5.015, 5967               16-Nov-18 23:10
+CCS PCD C Compiler, Version 5.015, 5967               16-Nov-18 23:42
 
                Filename:   D:\KMUTT\Y3T1\FRA321\Demo1\Module6-7\PICA.lst
 
@@ -1284,9 +1284,9 @@ CCS PCD C Compiler, Version 5.015, 5967               16-Nov-18 23:10
 1618:  MOV.B   W0L,224
 161A:  CLR.B   225
 .................... 		//printf("setzero z axis finish"); 
-.................... 		count =0; 
-161C:  CLR     810
-161E:  CLR     812
+.................... 		countz =0; 
+161C:  CLR     814
+161E:  CLR     816
 .................... 		u = 0; 
 1620:  CLR     828
 1622:  MOV     [--W15],W5
