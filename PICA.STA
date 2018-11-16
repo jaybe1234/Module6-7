@@ -5,16 +5,16 @@ ROM used:   3860/33788 (11%)
             3.1 Average locations per line
             17.7 Average locations per statement
 
-RAM used:   240/8102 (3%) at main() level
-            279/8102 (3%) worst case
+RAM used:   240/8192 (3%) at main() level
+            279/8192 (3%) worst case
 
-Stack size: 30
+Stack size: 128
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
   345   218 100  PICA.c
-  862     0   0  D:\Program Files (x86)\PICC\devices\24FJ48GA002.h
-   33     0   0  ..\..\..\Desktop\mbed\MRLAB\BL_Support.h
+  862     0   0  C:\Program Files (x86)\PICC\devices\24FJ48GA002.h
+   33     0   0  BL_Support.h
 ----- -----
  1240   218 Total
 

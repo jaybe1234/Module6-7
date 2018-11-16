@@ -6,7 +6,7 @@ Compiler=PCD
 [Target Data]
 FileList=PICA.c
 [Directories]
-Include=D:\Program Files (x86)\PICC\devices\;D:\Program Files (x86)\PICC\drivers\
+Include=D:\Program Files (x86)\PICC\devices\;D:\Program Files (x86)\PICC\drivers\;C:\Program Files (x86)\PICC\devices\;C:\Program Files (x86)\PICC\drivers\
 [PICA.c]
 Type=4
 [mru-list]

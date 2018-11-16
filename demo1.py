@@ -11,14 +11,14 @@ def midpoint(A,B):
     return(int((A[0]+B[0])*0.5),int((A[1]+B[1])*0.5))
 
 ser = serial.Serial()
-ser.port = 'COM19'
+ser.port = 'COM9'
 ser.baudrate=9600
 ser.timeout = 1
 ser.rts = 0
 ser.dtr = 0
 ser.open()
 x = ser.read()
-cap = cv.VideoCapture(0)
+cap = cv.VideoCapture(1)
 
 print('check1')
 A = coordinate(11,ser)
@@ -52,7 +52,7 @@ while (1):
             print('setzero_z finish')
             break
 
-time.sleep(5)
+# time.sleep(5)
 t = time.clock()
 
 while(time.clock()-t<=2):
@@ -99,7 +99,7 @@ for contour in cnts:
     angle += 90
     y = 357 - 121 - center[1]
     print(y)
-    cv.imshow('frame',frame)
+    # cv.imshow('frame',frame)
     bag_pos = (float(center[0] * 22 / 145), float(y * 22 / 145))
     bag_pos_AB = ((bag_pos[0] + bag_pos[1]) / sqrt(2), ((bag_pos[0] - bag_pos[1]) / sqrt(2)))
     #print(bag_pos)
@@ -116,10 +116,41 @@ while (1):
         print("data =", ord(data))
         if ord(data) == 107:
             print('go posAB finish')
-            breakw
+            break
 
 
 
 B.rotate(angle)
 print('check7')
+A.put(3)
+A.down(6)
+while (1):
+    if ser.inWaiting() > 0:
+        data = ser.read(1)
+        print("data =", ord(data))
+        if ord(data) == 107:
+            print('done move Z')
+            break
+time.sleep(2)
+A.grab()
+print('check8')
+time.sleep(1)
+A.setZ()
+while (1):
+    if ser.inWaiting() > 0:
+        data = ser.read(1)
+        print("data =", ord(data))
+        if ord(data) == 107:
+            print('setZ finish')
+            break
+A.move(0)
+B.move(0)
+while (1):
+    if ser.inWaiting() > 0:
+        data = ser.read(1)
+        print("data =", ord(data))
+        if ord(data) == 107:
+            print('go posAB finish')
+            break
+B.rotate(0)
 

@@ -67,8 +67,8 @@ class coordinate:
         for i in packet:
             self.ser.write(i)
 
-    def put(self):
-        packet = [255, 255, self.id, 5, 3, 0, 0, 0]
+    def put(self,state):
+        packet = [255, 255, self.id, 5, state, 0, 0, 0]
         for i in range(len(packet)):
             packet[i] = struct.pack('B', packet[i])
         for i in packet:

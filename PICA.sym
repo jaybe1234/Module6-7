@@ -33,41 +33,41 @@ W4      @PRINTFD32_9600_5725_5724.P2
 W4      @PRINTFD16_9600_5725_5724.P3
 630.6   C1OUT
 630.7   C2OUT
-85A-85D e
-85E-861 s
-862-865 p
-866-869 theta_d
-86A-86D count
-86E-871 countz
-872-875 ez
-876-879 sz
-87A-87D pz
-87E-881 theta_z
-882-883 u
-884-885 uz
-886-887 Kp
-888-889 Ki
-88A-88B Kd
-88C-88D direction
-88E-88F direction_z
-890-891 state
-892-893 id
-894-895 data
-896-897 sign
-898-899 Duty_Servo
-89A-89B action
-89C     SM_id
-89E-89F getPackage
-8A0-8BF array
-8C0-8C3 A
-8C4-8C5 Z
-8C6-8C7 @sprintf_string
-8C8-8CB MAIN.float_num
-8CC-8CD grab.Servo_D
-8CC-8CF pid.delta_a
-8D4-8D5 driveMotor.duty
-8E6-8E7 UART1_Isr.c
-8E8-8E9 SM_RxD.c
+800-803 e
+804-807 s
+808-80B p
+80C-80F theta_d
+810-813 count
+814-817 countz
+818-81B ez
+81C-81F sz
+820-823 pz
+824-827 theta_z
+828-829 u
+82A-82B uz
+82C-82D Kp
+82E-82F Ki
+830-831 Kd
+832-833 direction
+834-835 direction_z
+836-837 state
+838-839 id
+83A-83B data
+83C-83D sign
+83E-83F Duty_Servo
+840-841 action
+842     SM_id
+844-845 getPackage
+846-865 array
+866-869 A
+86A-86B Z
+86C-86D @sprintf_string
+86E-871 MAIN.float_num
+872-873 grab.Servo_D
+872-875 pid.delta_a
+87A-87B driveMotor.duty
+88C-88D UART1_Isr.c
+88E-88F SM_RxD.c
 2780-27FF Stack
 
 ROM Allocation:
@@ -97,12 +97,12 @@ ROM Allocation:
 0018FE  @cinit2
 
 Project Directory:
-    C:\Users\HP\Documents\GitHub\Module6-7\
+    D:\KMUTT\Y3T1\FRA321\Demo1\Module6-7\
 
 Project Files:
-    PICA.c                                                  [16-¾.Â.-18 23:05  CRC=DE0AFD0C]
-    D:\Program Files (x86)\PICC\devices\24FJ48GA002.h       [12-¾.Â.-13 14:36  CRC=2B092578]
-    ..\..\..\Desktop\mbed\MRLAB\BL_Support.h                [28-µ.¤.-16 04:52  CRC=87294453]
+    PICA.c                                                  [16-Nov-18 23:06  CRC=DE0AFD0C]
+    C:\Program Files (x86)\PICC\devices\24FJ48GA002.h       [12-Nov-13 14:36  CRC=2B092578]
+    BL_Support.h                                            [16-Nov-18 23:09  CRC=87294453]
 
 Source signature=1766AB2A
 
@@ -116,10 +116,6 @@ Compiler Settings:
     Opt Level:      9
     Short,Int,Long: SIGNED: 8,16,32
     Float,Double:   32,64
-    ICD Provisions: Yes
-    Predefined symbols:
-       #define __DEBUG 1
-       #define __PIC24FJ48GA002__ TRUE
 
 Output Files:
     Errors:      PICA.err

@@ -173,7 +173,7 @@ void setzero_z()
 		set_pwm_duty(4,0);			
 		putc('k');
 		//printf("setzero z axis finish");
-		count =0;
+		countz =0;
 		u = 0;
 }
 void pid(float delta_a){
