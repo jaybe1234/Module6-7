@@ -163,7 +163,7 @@ while (1):
         if ord(data) == 107:
             print('go posAB finish')
             break
-time.sleep(1)
+time.sleep(2)
 A.put(3)
 
 

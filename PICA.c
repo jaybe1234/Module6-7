@@ -87,13 +87,13 @@ void grip(int Servo_D)
 void grab(int Servo_D)
 {
 	if( Servo_D == 1){
-		set_pwm_duty(5,80);
-}
-	else if (Servo_D == 2){
 		set_pwm_duty(5,100);
 }
+	else if (Servo_D == 2){
+		set_pwm_duty(5,112);
+}
 	else if (Servo_D == 3){
-		set_pwm_duty(5,132);
+		set_pwm_duty(5,135);
 }	
 }
 
