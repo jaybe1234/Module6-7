@@ -59,7 +59,9 @@ t = time.clock()
 while(time.clock()-t<=2):
     ret, frame = cap.read()
     #cv.imshow('frame', frame)
-frame = frame[121:357,227:372]
+frame[0:480, 417:640] = 0
+frame[0:480, 0:313] = 0
+# frame = frame[121:357,227:372]
 gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
 blur = cv.GaussianBlur(gray, (15, 15), 0)
 sharpened = cv.addWeighted(blur, -0.3, gray, 1, 0)
@@ -98,10 +100,10 @@ for contour in cnts:
         else:
             angle = atan2((mid4[1] - center[1]), (mid4[0] - center[0])) * 180 / pi
     angle += 90
-    y = 357 - 121 - center[1]
+    y = 480 - 121 - center[1]
     print(y)
     # cv.imshow('frame',frame)
-    bag_pos = (float(center[0] * 22 / 145), float(y * 22 / 145))
+    bag_pos = (float((center[0]-227) * 22 / 145), float(y * 22 / 145))
     bag_pos_AB = ((bag_pos[0] + bag_pos[1]) / sqrt(2), ((bag_pos[0] - bag_pos[1]) / sqrt(2)))
     #print(bag_pos)
 print(bag_pos_AB)
