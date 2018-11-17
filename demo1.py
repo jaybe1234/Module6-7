@@ -67,6 +67,7 @@ while(time.clock()-t<=2):
     #cv.imshow('frame', frame)
 frame[0:480, 437:640] = 0
 frame[0:480, 0:313] = 0
+frame[350:480, 0:640] = 0
 #frame = frame[121:357,227:372]
 gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
 blur = cv.GaussianBlur(gray, (15, 15), 0)
@@ -109,8 +110,8 @@ for contour in cnts:
     y = 480 - 121 - center[1]
     print(y)
     # cv.imshow('frame',frame)
-    bag_pos = (float((center[0]-227) * 22 / 145), float(y * 22 / 145))
-    bag_pos_AB = ((bag_pos[0] + bag_pos[1]) / sqrt(2), ((bag_pos[0] - bag_pos[1]) / sqrt(2)))
+    bag_pos = (float((center[0] - 227) * 22 / 145 + 1.2), float(y * 22 / 145 - 7))
+    bag_pos_AB = ((bag_pos[0] + bag_pos[1]) / sqrt(2) - 1, ((bag_pos[0] - bag_pos[1]) / sqrt(2)) - 2)
     cv.imwrite('frame.png',frame)
     #print(bag_pos)
 print(bag_pos_AB)
