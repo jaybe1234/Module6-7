@@ -10,6 +10,10 @@ from math import atan2,pi,sqrt
 def midpoint(A,B):
     return(int((A[0]+B[0])*0.5),int((A[1]+B[1])*0.5))
 
+pattern2A =[17.5,20.32,17.5,16.79]
+pattern2B =[-16.5,-13.67,-10.84,-10.13]
+patternangle =[0,90,180,270]
+downd2=[10]
 ser = serial.Serial()
 ser.port = 'COM19'
 ser.baudrate=9600
@@ -27,10 +31,11 @@ B = coordinate(22,ser)
 print('check3')
 
 
-A.setZero()
-A.setZero()
+
 B.setZero()
 B.setZero()
+A.setZero()
+A.setZero()
 
 #verify 1 setzero xy
 while (1):
@@ -42,7 +47,7 @@ while (1):
             break
 B.rotate(0)
 ser.reset_output_buffer()
-B.put(3)
+#B.put(3)
 
 A.setZ()
 #verify 2 setzero z
@@ -60,9 +65,9 @@ t = time.clock()
 while(time.clock()-t<=2):
     ret, frame = cap.read()
     #cv.imshow('frame', frame)
-frame[0:480, 417:640] = 0
+frame[0:480, 437:640] = 0
 frame[0:480, 0:313] = 0
-# frame = frame[121:357,227:372]
+#frame = frame[121:357,227:372]
 gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
 blur = cv.GaussianBlur(gray, (15, 15), 0)
 sharpened = cv.addWeighted(blur, -0.3, gray, 1, 0)
@@ -114,24 +119,22 @@ A.move(bag_pos_AB[0])
 print('checkpoint5')
 B.move(bag_pos_AB[1])
 print('checkpoint6')
+
 #verify 2 setzero z
 while (1):
     if ser.inWaiting() > 0:
         data = ser.read(1)
         print("data =", ord(data))
-        if ord(data) == 107:
+        if ord(data) == 80:
             print('go posAB finish')
             break
-
-
-
 B.rotate(angle)
 print('check7')
 # time.sleep(1)
+#ser.reset_output_buffer()
+#B.put(3)
 ser.reset_output_buffer()
-B.put(3)
-ser.reset_output_buffer()
-# time.sleep(1)
+#time.sleep(1)
 A.down(6)
 while (1):
     if ser.inWaiting() > 0:
@@ -142,7 +145,7 @@ while (1):
             break
 # time.sleep(2)
 ser.reset_output_buffer()
-B.grab()
+#B.grab()
 print('check8')
 ser.reset_output_buffer()
 # time.sleep(1)
@@ -154,17 +157,18 @@ while (1):
         if ord(data) == 107:
             print('setZ finish')
             break
-A.move(19.06)
-B.move(-19.00)
+A.move(pattern2A[3])
+B.move(pattern2B[3])
 while (1):
     if ser.inWaiting() > 0:
         data = ser.read(1)
         print("data =", ord(data))
-        if ord(data) == 107:
+        if ord(data) == 80:
             print('go posAB finish')
             break
-B.rotate(0)
-A.down(10)
+B.rotate(patternangle[3])
+#A.down(8)
+A.downdrop(downd2[0])
 while (1):
     if ser.inWaiting() > 0:
         data = ser.read(1)
@@ -174,7 +178,7 @@ while (1):
             break
 # time.sleep(2)
 ser.reset_output_buffer()
-B.put(3)
+#B.put(3)
 
 
 A.setZ()
@@ -185,8 +189,8 @@ while (1):
         if ord(data) == 107:
             print('go posAB finish')
             break
-A.setZero()
-B.setZero()
+
+
 
 
 

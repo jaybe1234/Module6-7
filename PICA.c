@@ -87,7 +87,7 @@ void grip(int Servo_D)
 void grab(int Servo_D)
 {
 	if( Servo_D == 1){
-		set_pwm_duty(5,100);
+		set_pwm_duty(5,87);
 }
 	else if (Servo_D == 2){
 		set_pwm_duty(5,112);
@@ -156,7 +156,8 @@ void setzero()
 		}
 	while(input_state(PIN_B4)==1);		//PIN_B5 = DI1
 		set_pwm_duty(1,0);				//motorA stop (0,0)
-		set_pwm_duty(2,0);			
+		set_pwm_duty(2,0);
+		grab(3);	
 		putc('k'); 
 		//printf("setzero finish");
 		count =0;
@@ -223,7 +224,7 @@ void SM_RxD(int c){
 		}
 		else if (SM_id == 4){ // bit 4 Action
 			SM_id++;
-			if (c <= 5 ){
+			if (c <= 6 ){
 				state = c;
 			}else if (c == 1){ // setzero
 				getPackage = 1;
@@ -304,7 +305,7 @@ void main(){
 			do{
 				delay_ms(1);
 			}while(input_state(PIN_A1)==0);			
-			putc('k');
+			putc('P');
 			//printf("A and B Ready");
 			
 			getPackage = 0;
@@ -316,7 +317,7 @@ void main(){
 				setzero_z(); 
 				getPackage = 0;
 					}
-	if (getPackage == 1 && state == 4){ // state 4 go position z
+	if (getPackage == 1 && state == 4){ // state 4 go position z + grab
 				A = array[1] + (array[2]/100);
 				countz=0;enable_interrupts(INT_TIMER1);
 			do{
@@ -327,6 +328,8 @@ void main(){
 				set_pwm_duty(3,0);	
 				set_pwm_duty(4,0);
 				disable_interrupts(INT_TIMER1);
+				grab(1);
+				delay_ms(10);
 				putc('k');
 				getPackage = 0;
 				}
@@ -338,6 +341,21 @@ void main(){
 			printf("state%d\n",state);
 					}
 	delay_ms(10);
+	if (getPackage == 1 && state == 6){ // state 6 go position z + drop
+				A = array[1] + (array[2]/100);
+				countz=0;enable_interrupts(INT_TIMER1);
+			do{
+				set_pwm_duty(3,0);	
+				set_pwm_duty(4,2000);
+				//printf("\countzz = %s\n", print_float(countz));
+			}while(countz<=A);
+				set_pwm_duty(3,0);	
+				set_pwm_duty(4,0);
+				disable_interrupts(INT_TIMER1);
+				grab(2);
+				putc('k');
+				getPackage = 0;
+				}
 	//	printf("\nresult = %s\n", print_float(u));
 	//	printf("\nerror = %s\n", print_float(e));
 }

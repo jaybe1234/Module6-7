@@ -58,7 +58,12 @@ class coordinate:
             packet[i] = struct.pack('B', packet[i])
         for i in packet:
             self.ser.write(i)
-
+    def downdrop(self,posz):
+        packet = [255, 255, self.id, 6,1,posz,0,0]
+        for i in range(len(packet)):
+            packet[i] = struct.pack('B', packet[i])
+        for i in packet:
+            self.ser.write(i)
 
     def grab(self):
         packet = [255, 255, self.id, 4, 1, 0, 0, 0]
@@ -75,7 +80,11 @@ class coordinate:
             self.ser.write(i)
 
     def rotate(self,angle):
-        packet = [255, 255, self.id, 5, abs(int(angle)), 0,0, 0]
+        if abs(int(angle)) < 250:
+                packet = [255, 255, self.id, 5, abs(int(angle)), 0,0, 0]
+        else:
+                value1=abs(int(angle))-250
+                packet = [255, 255, self.id, 5, 250, value1, 0, 0]
         for i in range(len(packet)):
             packet[i] = struct.pack('B', packet[i])
         for i in packet:
