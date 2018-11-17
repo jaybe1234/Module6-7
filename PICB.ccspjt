@@ -1,0 +1,16 @@
+[PROJECT]
+Target=PICB.hex
+Processor_Text=PIC24FJ48GA002
+CCSVersion=5.015
+Compiler=PCD
+[Target Data]
+FileList=PICB.c
+[Directories]
+Include=D:\Program Files (x86)\PICC\devices\;D:\Program Files (x86)\PICC\drivers\
+[PICB.c]
+Type=4
+[mru-list]
+1=PICB.c
+[Units]
+Count=1
+1=PICB (main)

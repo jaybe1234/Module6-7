@@ -1,0 +1,127 @@
+W0      @SCRATCH
+W0L     _RETURN_
+W0 -W1  @DIVFF.P1
+W0 -W1  @READ_ROM_MEMORY.P2
+W0      @delay_us1.P3
+W0 -W1  @SFTOI.P4
+W0L     @SPRINTF.P5
+W0 -W1  @DIV3232B.P6
+W0      @delay_ms1.P7
+W0 -W1  @FLT.P8
+W0 -W1  @PRINTFD32_9600_5725_5724.P9
+W0      @SITOF.P10
+W0      @PRINTFD16_9600_5725_5724.P11
+W0 -W1  @ADDFF.P12
+W0      @PRINTFD16_788.P13
+W0 -W1  @MULFF.P14
+W1      @SCRATCH
+W1      @WRITE_PACKED_MEMORY.P1
+W1      @READ_PACKED_MEMORY.P2
+W2 -W3  @DIV3232B.P1
+W2 -W3  @MULFF.P2
+W2      @READ_ROM_MEMORY.P3
+W2 -W3  @ADDFF.P4
+W2      @WRITE_PACKED_MEMORY.P5
+W2      @READ_PACKED_MEMORY.P6
+W2 -W3  @DIVFF.P7
+W2 -W3  @FLT.P8
+W3      @WRITE_PACKED_MEMORY.P1
+W3      @READ_ROM_MEMORY.P2
+W3      @READ_PACKED_MEMORY.P3
+W4      @PRINTFD16_9600_5725_5724.P1
+W4      @PRINTFD32_9600_5725_5724.P2
+W4      @PRINTFD16_788.P3
+630.6   C1OUT
+630.7   C2OUT
+85A-85D e
+85E-861 s
+862-865 p
+866-869 theta_d
+86A-86D count
+86E-86F u
+870-871 Kp
+872-873 Ki
+874-875 Kd
+876-877 direction
+878-879 state
+87A-87B id
+87C-87D data
+87E-87F sign
+880-881 Z
+882-883 Duty_Servo
+884-885 action
+886     SM_id
+888-889 getPackage
+88A-8A9 array
+8AA-8AD A
+8AE-8AF @sprintf_string
+8B0-8B3 MAIN.float_num
+8B4-8B5 grab.Servo_D
+8B4-8B7 pid.delta_a
+8B4-8B5 grip.Servo_D
+8B6-8B7 grip.D
+8BC-8BD driveMotor.duty
+8CE-8CF UART1_Isr.c
+8D2-8D3 SM_RxD.c
+2780-27FF Stack
+
+ROM Allocation:
+000DFC  @const826.call
+000E16  @const827.call
+000E2C  @ADDFF
+000FD6  INT_EXT_INPUT0
+001026  @SITOF
+001070  @SFTOI
+00109C  SM_RxD
+001158  UART1_Isr
+00118A  Init_Interrupts
+0011C6  @PRINTFD16_9600_5725_5724
+0012BC  setzero
+0012E0  @DIVFF
+0013AA  @MULFF
+00146E  @FLT
+0014D6  driveMotor
+001534  pid
+001682  @DIV3232B
+0016C6  @PRINTFD32_9600_5725_5724
+0017DA  grab
+0017FE  @delay_ms1
+00180E  grip
+001846  MAIN
+001846  @cinit1
+00189C  @cinit2
+
+Project Directory:
+    C:\Users\HP\Documents\GitHub\Module6-7\
+
+Project Files:
+    PICB.c                                                  [17-¾.Â.-18 05:49  CRC=A956D742]
+    D:\Program Files (x86)\PICC\devices\24FJ48GA002.h       [12-¾.Â.-13 14:36  CRC=2B092578]
+    BL_Support.h                                            [28-µ.¤.-16 04:52  CRC=87294453]
+
+Source signature=E2B28560
+
+Units:
+    PICB (main)
+
+Compiler Settings:
+    Processor:      PIC24FJ48GA002
+    Pointer Size:   16
+    ADC Range:      0-65535
+    Opt Level:      9
+    Short,Int,Long: SIGNED: 8,16,32
+    Float,Double:   32,64
+    ICD Provisions: Yes
+    Predefined symbols:
+       #define __DEBUG 1
+       #define __PIC24FJ48GA002__ TRUE
+
+Output Files:
+    Errors:      PICB.err
+    INHX8:       PICB.hex
+    Symbols:     PICB.sym
+    List:        PICB.lst
+    Debug/COFF:  PICB.cof
+    Project:     PICB.ccspjt
+    Call Tree:   PICB.tre
+    Statistics:  PICB.STA

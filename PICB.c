@@ -10,7 +10,7 @@
 #use rs232(UART1, BAUD = 9600, XMIT = PIN_B13, RCV = PIN_B12)
 float e,s,p,theta_d,count =0;
 int u,Kp,Ki,Kd;
-int direction=1,state,id,data,sign,Z,Duty_Servo;
+int direction=1,state,id,data,sign,Z,Duty_Servo,action;
 char SM_id = 1;
 int getPackage = 0;
 float array[8];
@@ -53,7 +53,18 @@ setup_compare(1,COMPARE_PWM|COMPARE_TIMER2);
 setup_compare(2,COMPARE_PWM|COMPARE_TIMER2);
 setup_compare(5,COMPARE_PWM|COMPARE_TIMER3);
 }
-
+void grab(int Servo_D)
+{
+	if( Servo_D == 1){
+		set_pwm_duty(5,100);
+}
+	else if (Servo_D == 2){
+		set_pwm_duty(5,112);
+}
+	else if (Servo_D == 3){
+		set_pwm_duty(5,135);
+}	
+}
 
 void grip(int Servo_D)
 {
@@ -221,9 +232,11 @@ void main(){
 			printf("%d %d %d \n",array[0],array[1],array[2]);
 					}
 	if (getPackage == 1 && state == 4){ // state 4
-			printf("state%d\n",state);
-			printf("%d %d %d \n",array[0],array[1],array[2]);
+			action=(int)array[0];
+			grab(action);
 			getPackage = 0;
+			printf("%d %d %d \n",(int)array[0],array[1],array[2]);
+			printf("state%d\n",state);
 		}
 	if (getPackage == 1 && state == 5){ // state 5
 			Z=(int)array[0]+(int)array[1];

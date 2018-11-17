@@ -1,0 +1,67 @@
+
+ROM used:   3988/33788 (12%)
+            3988/33788 (12%) including unused fragments
+
+            3.5 Average locations per line
+            24.2 Average locations per statement
+
+RAM used:   216/8102 (3%) at main() level
+            256/8102 (3%) worst case
+
+Stack size: 30
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+  253   165 100  PICB.c
+  862     0   0  D:\Program Files (x86)\PICC\devices\24FJ48GA002.h
+   33     0   0  BL_Support.h
+----- -----
+ 1148   165 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     68   1    8             @DIV3232B
+0     16   0    2             @delay_ms1
+0    202   3    8             @DIVFF
+0     44   1    4             @SFTOI
+0    196   2    8             @MULFF
+0     74   1    2             @SITOF
+0    426   5    8             @ADDFF
+0     80   1    0   104  3.0  INT_EXT_INPUT0
+0     60   1    0   362  2.4  Init_Interrupts
+0     36   0    2   197  3.1  grab
+0     56   1    4   215  3.7  grip
+0    246   3    0             @PRINTFD16_9600_5725_5724
+0     94   1    5   460  5.7  driveMotor
+0     36   0    2   354  4.2  setzero
+0    334   4   13   314  4.5  pid
+0    104   1    8             @FLT
+0    188   2    5   901  6.3  SM_RxD
+0     50   1    2    40  1.7  UART1_Isr
+0    846  11    3  2108  8.5  MAIN
+0     26   0    0             @const826
+0     22   0    0             @const827
+0    276   3    0             @PRINTFD32_9600_5725_5724
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               10
+    Statements              165
+    Comments                200
+    Volume (V)              7466
+    Difficulty (D)          42.7
+    Effort to implement (E) 319048
+    Time to implement (T)   4 hours, 55 minutes
+    Est Delivered Bugs (B)  2
+    Cyclomatic Complexity   31
+    Maintainability (MI)    121
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00BFE     0  3072  
+00C00-00C02     4  0  
+00C04-00DFA   504  0  
+00DFC-083FA  3480  26728  
+
+
+

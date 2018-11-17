@@ -1,0 +1,7 @@
+>>> Warning 216 "PICB.c" Line 252(1,2): Interrupts disabled during call to prevent re-entrancy:  (@ADDFF)
+>>> Warning 216 "PICB.c" Line 252(1,2): Interrupts disabled during call to prevent re-entrancy:  (@SITOF)
+>>> Warning 216 "PICB.c" Line 252(1,2): Interrupts disabled during call to prevent re-entrancy:  (@SFTOI)
+>>> Warning 202 "PICB.c" Line 188(7,16): Variable never used:   float_num
+      Memory usage:   ROM=12%      RAM=3% - 3%
+      0 Errors,  4 Warnings.
+Build Successful.
