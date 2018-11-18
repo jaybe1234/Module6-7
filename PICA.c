@@ -157,7 +157,7 @@ void setzero()
 	while(input_state(PIN_B4)==1);		//PIN_B5 = DI1
 		set_pwm_duty(1,0);				//motorA stop (0,0)
 		set_pwm_duty(2,0);
-		grab(3);	
+		//grab(3);	
 		putc('k'); 
 		//printf("setzero finish");
 		count =0;

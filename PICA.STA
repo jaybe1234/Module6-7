@@ -1,22 +1,22 @@
 
-ROM used:   3992/33788 (12%)
-            3992/33788 (12%) including unused fragments
+ROM used:   3984/33788 (12%)
+            3984/33788 (12%) including unused fragments
 
             3.2 Average locations per line
-            16.9 Average locations per statement
+            17.0 Average locations per statement
 
-RAM used:   240/8102 (3%) at main() level
-            279/8102 (3%) worst case
+RAM used:   240/8192 (3%) at main() level
+            279/8192 (3%) worst case
 
-Stack size: 30
+Stack size: 128
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-  363   236 100  PICA.c
-  862     0   0  D:\Program Files (x86)\PICC\devices\24FJ48GA002.h
+  363   235 100  PICA.c
+  862     0   0  C:\Program Files (x86)\PICC\devices\24FJ48GA002.h
    33     0   0  BL_Support.h
 ----- -----
- 1258   236 Total
+ 1258   235 Total
 
 Page ROM  %  RAM   Vol Diff  Functions:
 ---- --- --- ---   --- ----  ----------
@@ -33,7 +33,7 @@ Page ROM  %  RAM   Vol Diff  Functions:
 0    246   3    0             @PRINTFD16_9600_5725_5724
 0     36   0    2   197  3.1  grab
 0     94   1    5   460  5.7  driveMotor
-0     54   1    2   399  3.8  setzero
+0     46   1    2   373  3.8  setzero
 0     36   0    2   238  3.7  setzero_z
 0    338   4   13   340  4.5  pid
 0    104   1    8             @FLT
@@ -46,22 +46,22 @@ Page ROM  %  RAM   Vol Diff  Functions:
 
 Program metrics:
     Functions               11
-    Statements              236
-    Comments                218
-    Volume (V)              9302
+    Statements              235
+    Comments                219
+    Volume (V)              9261
     Difficulty (D)          47.0
-    Effort to implement (E) 436996
-    Time to implement (T)   6 hours, 45 minutes
+    Effort to implement (E) 434896
+    Time to implement (T)   6 hours, 43 minutes
     Est Delivered Bugs (B)  2
     Cyclomatic Complexity   36
-    Maintainability (MI)    114
+    Maintainability (MI)    115
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00BFE     0  3072  
 00C00-00C02     4  0  
 00C04-00DFA   504  0  
-00DFC-083FA  3484  26724  
+00DFC-083FA  3476  26732  
 
 
 
