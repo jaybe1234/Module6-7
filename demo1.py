@@ -11,15 +11,21 @@ def midpoint(A,B):
     return(int((A[0]+B[0])*0.5),int((A[1]+B[1])*0.5))
 
 
-pattern1A = [32.16,18.02,32.16,18.02,32.16,18.02]
-pattern1B =[1.76,-4.6,1.76,-4.6,1.76,-4.6]
+pattern1A = [31.36,25.13,31.36,25.13,31.36,25.13]
+pattern1B =[2.40,-3.83,2.40,-3.83,2.40,-3.83]
 pattern1angle=[180,0,180,0,180,0]
-dropdown1 = [10,10,9,9,8,8]
+dropdown1 = [10,10,10,10,10,10]
 
-pattern2A =[17.5,20.32,17.5,16.79]
-pattern2B =[-16.5,-13.67,-10.84,-10.13]
-patternangle =[0,90,180,270]
-downd2=[10]
+pattern2A = [30.39,23.50,31.79,36.68]
+pattern2B =[3.01,-3.30,-9.94,-2.75]
+pattern2angle = [180,270,0,90]
+dropdown2 = [10,10,10,10]
+
+pattern3A = [30.3,24.07,32.41,26.19,35.59,29.37]
+pattern3B =[3.46,-2.77,1.33,-4.89,-1.85,-8.07]
+pattern3angle = [180,0,180,0,180,0]
+dropdown3 = [10,10,10,10,10,10]
+
 ser = serial.Serial()
 ser.port = 'COM9'
 ser.baudrate=9600
@@ -31,15 +37,25 @@ ser.open()
 cap = cv.VideoCapture(1)
 
 print('check1')
-A = coordinate(11,ser)
+A = coordinate(111,ser)
 print('check2')
-B = coordinate(22,ser)
+B = coordinate(222,ser)
 print('check3')
 redzone = [17.50,10.20]
 
-inputtype = 'big'
+inputtype = 'small'
 x = 0
-while x <= len(pattern1A):
+pressw = cv.imread('press w please.jpg')
+pressq = cv.imread('press q please.jpg')
+cv.imshow('press Q please',pressq)
+
+while True:
+    k = cv.waitKey(0)
+    if k == ord('q'):
+        cv.destroyAllWindows()
+        break
+while x < len(pattern3A):
+
     A.put(3)
     B.setZero()
     B.setZero()
@@ -61,7 +77,11 @@ while x <= len(pattern1A):
 
     A.setZ()
     #verify 2 setzero z
+    t = time.clock()
     while (1):
+        if time.clock()>=3:
+            A.setZ()
+            t = time.clock()
         if ser.inWaiting() > 0:
             data = ser.read(1)
             print("data =", ord(data))
@@ -72,22 +92,23 @@ while x <= len(pattern1A):
     # time.sleep(5)
 
     bag_pos_AB =(0,0)
+
     while (bag_pos_AB[0] == 0 and bag_pos_AB[1]==0):
         t = time.clock()
-        while(time.clock()-t<=2):
+        while(time.clock()-t<=1):
             ret, frame = cap.read()
             #cv.imshow('frame', frame)
         frame[0:480,275:640] = 0
-        frame[320:480,0:640] = 0
+        frame[384:480,0:640] = 0
         frame[0:480, 0:179] = 0
         #frame = frame[121:357,227:372]
         gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
         blur = cv.GaussianBlur(gray, (15, 15), 0)
         sharpened = cv.addWeighted(blur, -0.3, gray, 1, 0)
-        ret, thres1 = cv.threshold(blur, 92, 255,0)
+        ret, thres1 = cv.threshold(blur, 70, 255,0)
         (_, cnts, _) = cv.findContours(thres1, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
         for contour in cnts:
-            if cv.contourArea(contour) < 3163 or cv.contourArea(contour) > 5581:
+            if cv.contourArea(contour) < 2635 or cv.contourArea(contour) > 6000:
                 continue
             rect = cv.minAreaRect(contour)
             (center, _, _) = rect
@@ -124,13 +145,16 @@ while x <= len(pattern1A):
             y = 480 - 121 - center[1]
             print(y)
             # cv.imshow('frame',frame)
-            bag_pos = (float((center[0] - 227) * 30 / 201 + 2.35), float(y * 30 / 201) + 4.3)
+            bag_pos = [float((center[0] - 227) * 30 / 201 + 2.25), float(y * 30 / 201) + 4.3]
+            if bag_pos[1]<12:
+                bag_pos[0]+=1
+                bag_pos[1]+=1
             bag_pos_AB = ((bag_pos[0] + bag_pos[1]) / sqrt(2), ((bag_pos[0] - bag_pos[1]) / sqrt(2)))
 
 
 
             # cv.imwrite('frame.png',frame)
-            print('loop1')
+        print('loop1')
     print(bag_pos)
     crop = frame[int(center[1]) - 50:int(center[1]) + 50, int(center[0]) - 50:int(center[0]) + 50]
     hsv = cv.cvtColor(crop, cv.COLOR_BGR2HSV)
@@ -148,23 +172,23 @@ while x <= len(pattern1A):
     else:
         n=0
         # hsv_medium = cv.inRange(hsv,(h_low,s_low,v_low),(h_high,s_high,v_high))
-        hsv_medium = cv.inRange(hsv, (0, 0, 172), (255, 128, 178)) #color intensity 100, brightness 33, contrast 69
+        hsv_medium = cv.inRange(hsv, (0, 17, 32), (255, 34, 116)) #color intensity 100, brightness 33, contrast 69
         canny = cv.Canny(hsv_medium, 0, 255)
-        cv.imshow('hsv_big',canny)
+        # cv.imshow('hsv_big',canny)
         (_, cnts_medium, _) = cv.findContours(canny, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
         for contour in cnts_medium:
             if cv.contourArea(contour) < 0 or cv.contourArea(contour) > 2:
                 continue
             n+=1
-        if n>140:
+        if n>145:
             type = 'small'
-        elif n>50:
+        elif n>40:
             type = 'medium'
     print(type)
     if type != inputtype:
         target = redzone
-        targetangle = 0
-        targetdrop = 5
+        targetangle = angle
+        targetdrop = 0
     else:
         target = [pattern1A[x], pattern1B[x]]
         targetangle = pattern1angle[x]
@@ -173,7 +197,7 @@ while x <= len(pattern1A):
     print(bag_pos_AB)
     print('checkpoint4')
     A.move(bag_pos_AB[0])
-    time.sleep(2)
+    # time.sleep(2)
     print('checkpoint5')
     B.move(bag_pos_AB[1])
     print('checkpoint6')
@@ -194,7 +218,7 @@ while x <= len(pattern1A):
     #B.put(3)
     ser.reset_output_buffer()
     #time.sleep(1)
-    A.down(7)
+    A.down(6)
     while (1):
         if ser.inWaiting() > 0:
             data = ser.read(1)
@@ -234,7 +258,8 @@ while x <= len(pattern1A):
     time.sleep(1)
     B.rotate(targetangle)
     #A.down(8)
-    A.downdrop(targetdrop  )
+    print(targetdrop)
+    A.downdrop(targetdrop)
     while (1):
         if ser.inWaiting() > 0:
             data = ser.read(1)
@@ -248,13 +273,27 @@ while x <= len(pattern1A):
 
 
     A.setZ()
+    t = time.clock()
     while (1):
+        if time.clock()-t>=3:
+            A.setZ()
+            t = time.clock()
         if ser.inWaiting() > 0:
             data = ser.read(1)
             print("data =", ord(data))
             if ord(data) == 107:
                 print('go posAB finish')
                 break
+    A.put(3)
+    cv.imshow('Press W please',pressw)
+
+    while True:
+        k = cv.waitKey(0)
+        if k == ord('w'):
+            cv.destroyAllWindows()
+            break
+
+
 
 
 
