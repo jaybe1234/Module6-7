@@ -53,13 +53,13 @@ class coordinate:
         self.verfy = 0
 
     def down(self,posz):
-        packet = [255, 255, self.id, 4,1,posz,0,0]
+        packet = [255, 255, self.id, 4,1,int(posz),int(posz*100)%100,0]
         for i in range(len(packet)):
             packet[i] = struct.pack('B', packet[i])
         for i in packet:
             self.ser.write(i)
     def downdrop(self,posz):
-        packet = [255, 255, self.id, 6,1,posz,0,0]
+        packet = [255, 255, self.id, 6,1,int(posz),int(posz*100)%100,0]
         for i in range(len(packet)):
             packet[i] = struct.pack('B', packet[i])
         for i in packet:
