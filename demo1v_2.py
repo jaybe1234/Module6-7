@@ -17,20 +17,24 @@ def midpoint(A,B):
     return(int((A[0]+B[0])*0.5),int((A[1]+B[1])*0.5))
 
 
-pattern1A = [29.65,22.11,29.65,22.11,29.65,22.11]
-pattern1B =[5.27,-2.93,5.27,-2.93,5.27,-2.93]
+pattern1A = [29.65,22.25,29.65,22.25,29.65,22.25]
+pattern1B =[5.27,-2.79,5.27,-2.79,5.27,-2.79]
 pattern1angle=[180,0,180,0,180,0]
 dropdown1 = [4.9,4.9,4.6,4.6,3.5,3.5]
 
-pattern2A = [30.39,23.50,31.79,36.68]
-pattern2B =[3.01,-3.30,-9.94,-2.75]
+pattern2A = [29.65,22.59,28.97,36.67]
+pattern2B =[5.27,-1.39,-9.65,-1.76]
 pattern2angle = [180,270,0,90]
 dropdown2 = [5,5,5,5]
 
-pattern3A = [30.3,24.07,32.41,26.19,35.59,29.37]
-pattern3B =[3.46,-2.77,1.33,-4.89,-1.85,-8.07]
+pattern3A = [29.65,22.25,32.41,25.84,35.59,29.02]
+pattern3B =[5.27,-2.79,1.33,-5.24,-1.85,-8.72]
+# pattern3A = [30.3,24.07,32.41,26.19,35.59,29.37]
+# pattern3B =[5.27,-2.79,1.33,-4.89,-1.85,-8.07]
+# pattern3A = [29.65,22.25,31.77,24.37,33.89,26.49]
+# pattern3B =[5.27,-2.79,3.15,-4.90,1.03,-7.03]
 pattern3angle = [180,0,180,0,180,0]
-dropdown3 = [5,5,5,5,5,5]
+dropdown3 = [4.9,4.9,4.8,4.8,4.8,4.8]
 
 ser = serial.Serial()
 ser.port = 'COM9'
@@ -49,7 +53,7 @@ B = coordinate(222,ser)
 print('check3')
 redzone = [17.50,10.20]
 
-inputtype = 'medium'
+inputtype = 'small'
 x = 0
 pressw = cv.imread('press w please.jpg')
 pressq = cv.imread('press q please.jpg')
@@ -60,7 +64,7 @@ while True:
     if k == ord('q'):
         cv.destroyAllWindows()
         break
-while x < len(pattern3A):
+while x < len(pattern2A):
 
     A.put(3)
     B.setZero()
@@ -156,14 +160,18 @@ while x < len(pattern3A):
             bag_pos = [float((center[0] - 227) * 30 / 204 + 3.98), float(y * 30 / 204)-4.5]
             if angle >60 and angle<120:
                 bag_pos[0] -= 0.74
+
+            if angle>75 and angle<105:
+                bag_pos[1] += 0.8
             if angle >160 and angle<210:
                 bag_pos[0]+=0.6
                 bag_pos[1]-=1
             if angle > 250:
+                 bag_pos[0]-=1
                  bag_pos[1] -= 3.3
             elif angle > 235:
                 bag_pos[0] -= 0.5
-                bag_pos[1] -= 2.3
+                bag_pos[1] -= 2.6
                 print('woyyy')
             elif angle>=210:
                 print('210woy')
@@ -208,9 +216,9 @@ while x < len(pattern3A):
         targetangle = angle
         targetdrop = 0
     else:
-        target = [pattern1A[x], pattern1B[x]]
-        targetangle = pattern1angle[x]
-        targetdrop =dropdown1[x]
+        target = [pattern2A[x], pattern2B[x]]
+        targetangle = pattern2angle[x]
+        targetdrop =dropdown2[x]
         x+=1
     print(bag_pos)
     print('checkpoint4')
